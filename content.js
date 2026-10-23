@@ -98,7 +98,7 @@
 
     const badgeBtn = document.createElement('button');
     badgeBtn.id = 'yt-sim-live-badge-btn';
-    badgeBtn.className = 'ytp-button yt-sim-live-badge';
+    badgeBtn.className = 'yt-sim-live-badge';
     badgeBtn.title = 'Click to seek to live';
     badgeBtn.innerHTML = `
       <span class="yt-sim-live-dot" id="yt-sim-live-dot"></span>

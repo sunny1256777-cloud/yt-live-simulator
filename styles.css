@@ -15,34 +15,41 @@
   pointer-events: none !important;
 }
 
-/* 3. Live Badge in .ytp-right-controls (Right Side - Never gets clipped!) */
+/* 3. Live Badge in .ytp-right-controls (Right Side - Zero Clipping Pill) */
 .yt-sim-live-badge {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
-  background: rgba(20, 20, 23, 0.85) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  background: rgba(24, 24, 27, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
   border-radius: 14px !important;
   color: #eeeeee !important;
   font-family: "YouTube Sans", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: 13px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
-  padding: 4px 12px !important;
-  margin: 0 10px 0 4px !important;
+  padding: 0 14px !important;
+  margin: 0 12px 0 4px !important;
+  height: 28px !important;
+  width: auto !important;                    /* Explicitly auto width */
+  min-width: max-content !important;        /* MUST fit full text without clipping */
+  max-width: none !important;               /* No width limit */
+  overflow: visible !important;             /* Text will NEVER get cut off */
   line-height: normal !important;
   user-select: none !important;
   vertical-align: middle !important;
-  flex-shrink: 0 !important;
-  white-space: nowrap !important;
-  z-index: 25 !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  align-self: center !important;
+  flex-shrink: 0 !important;                /* Never squeeze */
+  white-space: nowrap !important;           /* Single line */
+  z-index: 30 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .yt-sim-live-badge:hover {
-  background: rgba(35, 35, 40, 0.95) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: rgba(39, 39, 42, 0.98) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
   color: #ffffff !important;
   transform: scale(1.03);
 }
@@ -73,6 +80,8 @@
 .yt-sim-live-text {
   letter-spacing: 0.2px !important;
   font-weight: 600 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
 }
 
 .yt-sim-live-text.behind {
