@@ -15,60 +15,47 @@
   pointer-events: none !important;
 }
 
-/* 3. Prevent YouTube's chapter container from squishing or clipping our badge */
-#movie_player.yt-sim-live-mode .ytp-chapter-container {
-  flex-shrink: 1 !important;
-  min-width: 0 !important;
-  max-width: 170px !important;
-  overflow: hidden !important;
-}
-
-#movie_player.yt-sim-live-mode .ytp-chapter-title-content {
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-}
-
-/* 4. Authentic YouTube Live Badge in .ytp-left-controls (Anti-Clipping Pill) */
+/* 3. Live Badge in .ytp-right-controls (Right Side - Never gets clipped!) */
 .yt-sim-live-badge {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 7px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  gap: 8px !important;
+  background: rgba(20, 20, 23, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 14px !important;
   color: #eeeeee !important;
   font-family: "YouTube Sans", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 12px !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
-  padding: 4px 10px !important;
-  margin: 0 6px !important;
+  padding: 4px 12px !important;
+  margin: 0 10px 0 4px !important;
   line-height: normal !important;
   user-select: none !important;
   vertical-align: middle !important;
-  flex-shrink: 0 !important;        /* NEVER get squeezed or clipped by chapters */
-  white-space: nowrap !important;  /* Keep text on single line */
-  z-index: 20 !important;
-  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  z-index: 25 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .yt-sim-live-badge:hover {
-  background: rgba(255, 255, 255, 0.18) !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(35, 35, 40, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
   color: #ffffff !important;
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 /* Red Dot when in sync with Live Head */
 .yt-sim-live-dot {
-  width: 6.5px !important;
-  height: 6.5px !important;
+  width: 7px !important;
+  height: 7px !important;
   border-radius: 50% !important;
   background-color: #ff0000 !important;
   display: inline-block !important;
   flex-shrink: 0 !important;
-  box-shadow: 0 0 7px rgba(255, 0, 0, 0.9) !important;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.9) !important;
   transition: background-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
@@ -89,7 +76,7 @@
 }
 
 .yt-sim-live-text.behind {
-  color: #fbbf24 !important; /* High-contrast golden yellow */
+  color: #fbbf24 !important; /* Golden yellow */
 }
 
 /* --- Authentic Live Progress Bar (0 to LiveHead) --- */

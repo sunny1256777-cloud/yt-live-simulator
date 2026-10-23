@@ -91,10 +91,10 @@
     updateActionBarButton(false);
   }
 
-  // 1. Inject Authentic "• Live" Badge in .ytp-left-controls
+  // 1. Inject Authentic "• Live" Badge in .ytp-right-controls (Right Side of Control Bar)
   function injectLiveBadge() {
-    const leftControls = document.querySelector('.ytp-left-controls');
-    if (!leftControls || document.getElementById('yt-sim-live-badge-btn')) return;
+    const rightControls = document.querySelector('.ytp-right-controls');
+    if (!rightControls || document.getElementById('yt-sim-live-badge-btn')) return;
 
     const badgeBtn = document.createElement('button');
     badgeBtn.id = 'yt-sim-live-badge-btn';
@@ -119,12 +119,8 @@
       }
     };
 
-    const timeDisplay = leftControls.querySelector('.ytp-time-display');
-    if (timeDisplay) {
-      leftControls.insertBefore(badgeBtn, timeDisplay);
-    } else {
-      leftControls.appendChild(badgeBtn);
-    }
+    // Insert as the first element in the right controls (left of Autoplay/CC)
+    rightControls.insertBefore(badgeBtn, rightControls.firstChild);
   }
 
   function removeLiveBadge() {
@@ -270,10 +266,10 @@
         label.textContent = 'Live';
         if (badgeBtn) badgeBtn.title = 'You are in sync with live broadcast';
       } else {
-        // Behind Live: Dot turns Grey, Text shows "-MM:SS Behind"
+        // Behind Live: Dot turns Grey, Text shows "-MM:SS Behind Live"
         dot.className = 'yt-sim-live-dot behind';
         label.className = 'yt-sim-live-text behind';
-        label.textContent = `-${formatTime(delay)} Behind`;
+        label.textContent = `-${formatTime(delay)} Behind Live`;
         if (badgeBtn) badgeBtn.title = `You are ${formatTime(delay)} behind! Click to jump to live.`;
       }
     }
