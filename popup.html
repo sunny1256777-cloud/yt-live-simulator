@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Live Simulator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="header">
+      <div class="logo-area">
+        <span class="live-dot-pulse"></span>
+        <h1>YT Live Simulator</h1>
+      </div>
+      <span class="tag">Anti-Procrastination</span>
+    </header>
+
+    <div class="status-card" id="current-status-card">
+      <div class="card-title" id="status-title">Checking Active Video...</div>
+      <div class="card-details" id="status-details">
+        Open any YouTube video to start a live session.
+      </div>
+      <div class="card-actions" id="status-actions"></div>
+    </div>
+
+    <div class="sessions-section">
+      <div class="section-header">
+        <h2>Active Live Sessions</h2>
+        <span class="badge-count" id="sessions-count">0</span>
+      </div>
+      <div class="sessions-list" id="sessions-list">
+        <div class="empty-state">No ongoing live sessions.</div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>💡 Tip: Browser band karne par bhi ghadi chalti rahegi!</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* =========================================================
+   YouTube Live Simulator - Authentic YouTube Live Styling
+   ========================================================= */
+
+/* --- When Live Mode is Active on #movie_player --- */
+
+/* 1. Hide the recorded time display (e.g. 2:49 / 44:38) */
+#movie_player.yt-sim-live-mode .ytp-time-display {
+  display: none !important;
+}
+
+/* 2. Hide YouTube's native recorded progress bar */
+#movie_player.yt-sim-live-mode .ytp-progress-bar {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 3. Authentic YouTube Live Badge in .ytp-left-controls */
+.yt-sim-live-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #eeeeee !important;
+  font-family: "YouTube Sans", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  padding: 0 8px !important;
+  height: 100% !important;
+  line-height: normal !important;
+  user-select: none !important;
+  vertical-align: middle !important;
+  transition: color 0.15s ease !important;
+}
+
+.yt-sim-live-badge:hover {
+  color: #ffffff !important;
+}
+
+/* Red Dot when in sync with Live Head */
+.yt-sim-live-dot {
+  width: 6.5px !important;
+  height: 6.5px !important;
+  border-radius: 50% !important;
+  background-color: #ff0000 !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.8) !important;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Grey Dot when lagging behind (Authentic YouTube behavior) */
+.yt-sim-live-dot.behind {
+  background-color: #999999 !important;
+  box-shadow: none !important;
+}
+
+.yt-sim-live-dot.ended {
+  background-color: #666666 !important;
+  box-shadow: none !important;
+}
+
+.yt-sim-live-text {
+  letter-spacing: 0.1px !important;
+  font-weight: 500 !important;
+}
+
+.yt-sim-live-text.behind {
+  color: #fbbf24 !important; /* Noticeable amber/yellow text showing -MM:SS Behind Live */
+  font-weight: 600 !important;
+}
+
+/* --- Authentic Live Progress Bar (0 to LiveHead) --- */
+.yt-sim-live-progress-container {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 14px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  cursor: pointer !important;
+  z-index: 50 !important;
+  touch-action: none !important;
+}
+
+.yt-sim-live-progress-bg {
+  position: relative !important;
+  width: 100% !important;
+  height: 3px !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  transition: height 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Expand on hover like native YouTube */
+#movie_player:hover .yt-sim-live-progress-bg,
+.yt-sim-live-progress-container:hover .yt-sim-live-progress-bg {
+  height: 5px !important;
+}
+
+/* Dynamic width controlled by JavaScript (NO !important here) */
+.yt-sim-live-play-progress {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+  background: #ff0000 !important;
+  pointer-events: none !important;
+  transition: width 0.1s linear;
+}
+
+/* Scrubber Dot */
+.yt-sim-live-scrubber {
+  position: absolute !important;
+  top: 50% !important;
+  width: 13px !important;
+  height: 13px !important;
+  border-radius: 50% !important;
+  background: #ff0000 !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), left 0.1s linear !important;
+  pointer-events: none !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Scrubber is visible on hover, or ALWAYS visible when behind live */
+#movie_player:hover .yt-sim-live-scrubber,
+.yt-sim-live-progress-container:hover .yt-sim-live-scrubber,
+.yt-sim-live-scrubber.active,
+.yt-sim-live-scrubber.behind-live {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+/* Live Time Hover Tooltip */
+.yt-sim-live-tooltip {
+  position: absolute !important;
+  bottom: 24px !important;
+  transform: translateX(-50%) !important;
+  background: rgba(24, 24, 27, 0.95) !important;
+  color: #ffffff !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  display: none !important;
+  white-space: nowrap !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  z-index: 60 !important;
+}
+
+.yt-sim-live-progress-container:hover .yt-sim-live-tooltip {
+  display: block !important;
+}
+
+/* --- Native Action Button Under Video --- */
+.yt-live-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 18px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-left: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  vertical-align: middle;
+}
+
+.yt-live-action-btn:hover {
+  background: #dc2626;
+  border-color: #ef4444;
+}
+
+.yt-live-action-btn.active {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
