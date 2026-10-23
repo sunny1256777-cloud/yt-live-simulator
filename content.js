@@ -270,10 +270,10 @@
         label.textContent = 'Live';
         if (badgeBtn) badgeBtn.title = 'You are in sync with live broadcast';
       } else {
-        // Behind Live: Dot turns Grey, Text shows "-MM:SS Behind Live"
+        // Behind Live: Dot turns Grey, Text shows "-MM:SS Behind"
         dot.className = 'yt-sim-live-dot behind';
         label.className = 'yt-sim-live-text behind';
-        label.textContent = `-${formatTime(delay)} Behind Live`;
+        label.textContent = `-${formatTime(delay)} Behind`;
         if (badgeBtn) badgeBtn.title = `You are ${formatTime(delay)} behind! Click to jump to live.`;
       }
     }

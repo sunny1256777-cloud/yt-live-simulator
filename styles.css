@@ -15,28 +15,49 @@
   pointer-events: none !important;
 }
 
-/* 3. Authentic YouTube Live Badge in .ytp-left-controls */
+/* 3. Prevent YouTube's chapter container from squishing or clipping our badge */
+#movie_player.yt-sim-live-mode .ytp-chapter-container {
+  flex-shrink: 1 !important;
+  min-width: 0 !important;
+  max-width: 170px !important;
+  overflow: hidden !important;
+}
+
+#movie_player.yt-sim-live-mode .ytp-chapter-title-content {
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+/* 4. Authentic YouTube Live Badge in .ytp-left-controls (Anti-Clipping Pill) */
 .yt-sim-live-badge {
   display: inline-flex !important;
   align-items: center !important;
   gap: 7px !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 14px !important;
   color: #eeeeee !important;
   font-family: "YouTube Sans", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
   cursor: pointer !important;
-  padding: 0 8px !important;
-  height: 100% !important;
+  padding: 4px 10px !important;
+  margin: 0 6px !important;
   line-height: normal !important;
   user-select: none !important;
   vertical-align: middle !important;
-  transition: color 0.15s ease !important;
+  flex-shrink: 0 !important;        /* NEVER get squeezed or clipped by chapters */
+  white-space: nowrap !important;  /* Keep text on single line */
+  z-index: 20 !important;
+  transition: all 0.2s ease !important;
 }
 
 .yt-sim-live-badge:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
   color: #ffffff !important;
+  transform: scale(1.02);
 }
 
 /* Red Dot when in sync with Live Head */
@@ -47,11 +68,11 @@
   background-color: #ff0000 !important;
   display: inline-block !important;
   flex-shrink: 0 !important;
-  box-shadow: 0 0 6px rgba(255, 0, 0, 0.8) !important;
+  box-shadow: 0 0 7px rgba(255, 0, 0, 0.9) !important;
   transition: background-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* Grey Dot when lagging behind (Authentic YouTube behavior) */
+/* Grey Dot when lagging behind */
 .yt-sim-live-dot.behind {
   background-color: #999999 !important;
   box-shadow: none !important;
@@ -63,13 +84,12 @@
 }
 
 .yt-sim-live-text {
-  letter-spacing: 0.1px !important;
-  font-weight: 500 !important;
+  letter-spacing: 0.2px !important;
+  font-weight: 600 !important;
 }
 
 .yt-sim-live-text.behind {
-  color: #fbbf24 !important; /* Noticeable amber/yellow text showing -MM:SS Behind Live */
-  font-weight: 600 !important;
+  color: #fbbf24 !important; /* High-contrast golden yellow */
 }
 
 /* --- Authentic Live Progress Bar (0 to LiveHead) --- */
@@ -101,7 +121,7 @@
   height: 5px !important;
 }
 
-/* Dynamic width controlled by JavaScript (NO !important here) */
+/* Dynamic width controlled by JavaScript */
 .yt-sim-live-play-progress {
   position: absolute !important;
   left: 0 !important;
